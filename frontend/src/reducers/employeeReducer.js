@@ -14,10 +14,10 @@ export const employeeReducer = (state = { employees: [] }, action) => {
       case ALL_EMPLOYEE_SUCCESS:
         return {
           loading: false,
-          employees: action.payload.emoloyees,
-          emoloyeesCount: action.payload.emoloyeesCount,
+          employees: action.payload.employees,
+          employeeCount: action.payload.employeeCount,
           resultPerPage: action.payload.resultPerPage,
-          filteredemoloyeesCount: action.payload.filteredemoloyeesCount,
+          filteredEmployeesCount: action.payload.filteredEmployeesCount,
         };
   
      
