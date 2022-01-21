@@ -1,11 +1,11 @@
 import React, { Fragment, useEffect, useState } from "react";
-import {  Loader, MetaData } from "../../components";
-
+import { EmployeeCard, Loader, MetaData } from "../../components";
+import './EmployeeDetails.css'
 import { useSelector, useDispatch } from "react-redux";
 import {
   clearErrors,
   getEmployeeDetails,
- 
+
 } from "../../actions/employeeActions";
 import { useAlert } from "react-alert";
 
@@ -17,7 +17,7 @@ const EmployeeDetails = ({ match }) => {
   const { employee, loading, error } = useSelector(
     (state) => state.employeeDetails
   );
-console.log(employee) 
+  console.log(employee)
 
   useEffect(() => {
     if (error) {
@@ -25,24 +25,33 @@ console.log(employee)
       dispatch(clearErrors());
     }
 
-   
 
-    
+
+
     dispatch(getEmployeeDetails(match.params.id));
   }, [dispatch, match.params.id, error, alert]);
 
   return (
     <Fragment>
-      <div>
-        <p>{employee?.name}</p>
-        <p>{employee?.createdAt}</p>
+      {loading ? (
+        <Loader />
+      ) : (
+        <Fragment>
+          <MetaData title={`${employee.name} -- ECOMMERCE`} />
+          <div className="employeeDetails">
+            <div>
+              <EmployeeCard employee={employee} />
+            </div>
+          </div>
 
-      </div>
-      </Fragment>
+        </Fragment>
+      )
+      }
+    </Fragment>
   )
 }
-    
-     
+
+
 
 
 export default EmployeeDetails;

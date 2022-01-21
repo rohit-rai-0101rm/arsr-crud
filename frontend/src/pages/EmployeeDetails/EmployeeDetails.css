@@ -1,0 +1,10 @@
+.employeeDetailsContainer{
+    margin: auto;
+}
+
+.employeeDetails{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
