@@ -9,12 +9,12 @@ import{
 } from '../constants/employeeConstants'
 import axios from 'axios'
 export const getEmployes =
-  ( currentPage) =>
+  ( keyword="",currentPage=1) =>
   async (dispatch) => {
     try {
       dispatch({ type: ALL_EMPLOYEE_REQUEST });
 
-      let link = `http://localhost:5000/api/v1/employees?page=${currentPage}`;
+      let link = `http://localhost:5000/api/v1/employees?keyword=${keyword}&page=${currentPage}`;
 
     
 

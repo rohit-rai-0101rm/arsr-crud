@@ -5,7 +5,7 @@ import {  EmployeeCard, Loader, MetaData } from "../../components";
 import Pagination from "react-js-pagination";
 import { useAlert } from "react-alert";
 import Typography from "@material-ui/core/Typography";
-
+import './AllEmployee.css'
 const AllEmployees = ({match}) => {
   const dispatch = useDispatch();
 
@@ -23,7 +23,7 @@ const AllEmployees = ({match}) => {
     resultPerPage,
     filteredEmployeesCount,
   } = useSelector((state) => state.employees);
-
+console.log(match);
   const keyword = match.params.keyword;
 
   const setCurrentPageNo = (e) => {
@@ -39,8 +39,8 @@ const AllEmployees = ({match}) => {
       dispatch(clearErrors());
     }
 
-    dispatch(getEmployes(currentPage));
-  }, [dispatch,  currentPage,  alert, error]);
+    dispatch(getEmployes(keyword,currentPage));
+  }, [dispatch, keyword,  currentPage,  alert, error]);
 
   return (
     <Fragment>
@@ -49,7 +49,6 @@ const AllEmployees = ({match}) => {
       ) : (
         <Fragment>
           <MetaData title="employees -- ECOMMERCE" />
-          <h2 className="employeesHeading">employees</h2>
 
           <div className="employees">
             {employees &&
