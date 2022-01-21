@@ -9,7 +9,7 @@ function App() {
     <Router>
       <Header />
       <Route exact path="/" component={Home} />
-      <Route exact path="/:id" component={EmployeeDetails} />
+      <Route exact path="/employee/:id" component={EmployeeDetails} />
       <Route exact path="/update/:id" component={UpdateEmployee} />
       <Route exact path="/create/new" component={AddEmployee} />
       <Route exact path="/create/new/f" component={Loader} />

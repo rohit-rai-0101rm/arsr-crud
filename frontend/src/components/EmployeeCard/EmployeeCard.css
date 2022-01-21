@@ -1,67 +1,117 @@
+.employeeCardContainer {
+  text-align: center;
+}
 .employeeCard {
-    width: 14vmax;
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    color: rgb(48, 48, 48);
-    margin: 2vmax;
-    transition: all 0.5s;
-    padding-bottom: 0.5vmax;
+  width: 20vmax;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: rgb(48, 48, 48);
+  margin: 2vmax;
+  transition: all 0.5s;
+  padding-bottom: 0.5vmax;
+  align-items: center;
+  text-align: center;
+}
+
+.employeeCard > img {
+  width: 14vmax;
+}
+
+.employeeCard > div {
+  margin: 0.5vmax;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.employeeCardSpan {
+  margin: 0.5vmax;
+  font: 300 0.7vmax "Roboto";
+}
+
+.employeeCard > p {
+  font-family: "Roboto";
+  font-size: 1.2vmax;
+  margin: 1vmax 0.5vmax;
+  margin-bottom: 0;
+}
+
+.employeeCard > span {
+  margin: 0.5vmax;
+  color: tomato;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 1vmax;
+}
+
+.employeeCard:hover {
+  box-shadow: 0 0 5px rgba(15, 15, 15, 0.26);
+  border-radius: 10px;
+  transform: translateY(-1vmax);
+}
+.actionIcons{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  margin-top: 10px;
+}
+.btn3{
+  height: 38px;
+  width: 96px;
+  border-radius: 10px;
+background-color: red;
+color: white;
+cursor: pointer;
+
+}
+.btn2{
+  height: 38px;
+  width: 96px;
+  border-radius: 10px;
+background-color: blue;
+color: white;
+cursor: pointer;
+}.btn1{
+  height: 38px;
+  width: 96px;
+  border-radius: 10px;
+background-color: green;
+cursor: pointer;
+
+color: white;
+}
+
+@media screen and (max-width: 600px) {
+  .employeeCardContainer {
+    border: 1px solid white;
   }
-  
-  .employeeCard > img {
-    width: 14vmax;
-  }
-  
-  .employeeCard > div {
-    margin: 0.5vmax;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-  }
-  
-  .employeeCardSpan {
-    margin: 0.5vmax;
-    font: 300 0.7vmax "Roboto";
-  }
-  
   .employeeCard > p {
-    font-family: "Roboto";
-    font-size: 1.2vmax;
-    margin: 1vmax 0.5vmax;
-    margin-bottom: 0;
+    font-size: 1.7vmax;
   }
-  
+
+  .employeeCard > div {
+    margin: 0vmax;
+    display: block;
+  }
+
   .employeeCard > span {
-    margin: 0.5vmax;
-    color: tomato;
-    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-    font-size: 1vmax;
+    font-size: 1.5vmax;
   }
-  
-  .employeeCard:hover {
-    box-shadow: 0 0 5px rgba(15, 15, 15, 0.26);
-  
-    transform: translateY(-1vmax);
+
+  .employeeCard > div > span {
+    margin: 0 0.5vmax;
+    font: 300 1vmax "Roboto";
   }
-  
-  @media screen and (max-width: 600px) {
-    .employeeCard > p {
-      font-size: 1.7vmax;
-    }
-  
-    .employeeCard > div {
-      margin: 0vmax;
-      display: block;
-    }
-  
-    .employeeCard > span {
-      font-size: 1.5vmax;
-    }
-  
-    .employeeCard > div > span {
-      margin: 0 0.5vmax;
-      font: 300 1vmax "Roboto";
-    }
-  }
-  
+}
+.employeeName {
+  font-weight: bolder;
+  font-size: xx-large;
+}
+.employeeRole {
+  font-weight: bold;
+
+  font-size: smaller;
+}
+.employeeCardContainer {
+  padding-top: 5px;
+}

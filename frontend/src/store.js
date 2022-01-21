@@ -2,9 +2,10 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
-import { employeeReducer } from "./reducers/employeeReducer";
+import { employeeReducer,employeeDetailsReducer } from "./reducers/employeeReducer";
 const reducer = combineReducers({
     employees: employeeReducer,
+    employeeDetails:employeeDetailsReducer
     
   });
   
