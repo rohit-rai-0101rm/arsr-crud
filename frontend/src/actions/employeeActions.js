@@ -8,7 +8,10 @@ import{
     EMPLOYEE_DETAILS_FAIL,
     NEW_EMPLOYEE_SUCCESS,
     NEW_EMPLOYEE_FAIL,
-    NEW_EMPLOYEE_REQUEST
+    NEW_EMPLOYEE_REQUEST,
+    UPDATE_EMPLOYEE_REQUEST,
+    UPDATE_EMPLOYEE_SUCCESS,
+    UPDATE_EMPLOYEE_FAIL
 } from '../constants/employeeConstants'
 import axios from 'axios'
 export const getEmployes =
@@ -75,6 +78,31 @@ export const getEmployes =
     } catch (error) {
       dispatch({
         type: NEW_EMPLOYEE_FAIL,
+        payload: error.response.data.message,
+      });
+    }
+  };
+  export const updateEmployee = (id, employeeData) => async (dispatch) => {
+    try {
+      dispatch({ type: UPDATE_EMPLOYEE_REQUEST });
+  
+      const config = {
+        headers: { "Content-Type": "application/json" },
+      };
+  
+      const { data } = await axios.put(
+        `http://localhost:5000/api/v1/employee/edit/${id}`,
+        employeeData,
+        config
+      );
+  
+      dispatch({
+        type: UPDATE_EMPLOYEE_SUCCESS,
+        payload: data.success,
+      });
+    } catch (error) {
+      dispatch({
+        type: UPDATE_EMPLOYEE_FAIL,
         payload: error.response.data.message,
       });
     }

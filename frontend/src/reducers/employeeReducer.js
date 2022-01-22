@@ -8,9 +8,15 @@ import{
     EMPLOYEE_DETAILS_SUCCESS,
     NEW_EMPLOYEE_REQUEST,
     NEW_EMPLOYEE_SUCCESS,
-    NEW_EMPLOYEE_FAIL
+    NEW_EMPLOYEE_FAIL,
+    UPDATE_EMPLOYEE_REQUEST,
+    UPDATE_EMPLOYEE_SUCCESS,
+    UPDATE_EMPLOYEE_FAIL,
+    DELETE_EMPLOYEE_FAIL,
+    DELETE_EMPLOYEE_REQUEST,
+    DELETE_EMPLOYEE_SUCCESS
 } from '../constants/employeeConstants'
-export const employeeReducer = (state = { employees: [] }, action) => {
+export const employeesReducer = (state = { employees: [] }, action) => {
     switch (action.type) {
       case ALL_EMPLOYEE_REQUEST :
         return {
@@ -89,6 +95,45 @@ export const employeeReducer = (state = { employees: [] }, action) => {
           error: action.payload,
         };
     
+      case CLEAR_ERRORS:
+        return {
+          ...state,
+          error: null,
+        };
+      default:
+        return state;
+    }
+  };
+  export const employeeReducer = (state = {}, action) => {
+    switch (action.type) {
+      case DELETE_EMPLOYEE_REQUEST:
+      case UPDATE_EMPLOYEE_REQUEST:
+        return {
+          ...state,
+          loading: true,
+        };
+      case DELETE_EMPLOYEE_SUCCESS:
+        return {
+          ...state,
+          loading: false,
+          isDeleted: action.payload,
+        };
+  
+      case UPDATE_EMPLOYEE_SUCCESS:
+        return {
+          ...state,
+          loading: false,
+          isUpdated: action.payload,
+        };
+      case DELETE_EMPLOYEE_FAIL:
+      case UPDATE_EMPLOYEE_FAIL:
+        return {
+          ...state,
+          loading: false,
+          error: action.payload,
+        };
+      
+      
       case CLEAR_ERRORS:
         return {
           ...state,
