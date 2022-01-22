@@ -29,6 +29,7 @@
     "moment": "^2.29.1",
     "mongoose": "^6.1.7",
     "nodemon": "^2.0.15",
+    "react-responsive-modal": "^6.2.0",
     "validators": "^0.3.1"
   }
 }

@@ -9,6 +9,9 @@ import Modal from "../Modal/Modal";
 import moment from "moment";
 import { deleteEmployee } from "../../actions/employeeActions";
 const EmployeeCard = ({ employee }) => {
+  const showMsg=()=>{
+    alert.success("one item deleted")
+  }
   const [modalOpen, setModalOpen] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
 
@@ -49,14 +52,14 @@ const EmployeeCard = ({ employee }) => {
         <div>
           <button
             onClick={() => {
-              setModalOpen(true);
-              if (confirmDelete) {
+             
                 dispatch(deleteEmployee(_id));
-                alert.success("one employee deleted");
+showMsg()
                 history.push("/employees");
-                window.location.reload();
+                window.location.reload()
+                alert.success("one employee deleted");
               }
-            }}
+            }
             className="btn3"
           >
             delete

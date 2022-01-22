@@ -3,7 +3,6 @@ import "./Modal.css";
 
 function Modal({ setOpenModal,setConfirmDelete }) {
   return (
-    <div className="modalBackground">
       <div className="modalContainer">
         <div className="titleCloseBtn">
           <button
@@ -15,11 +14,9 @@ function Modal({ setOpenModal,setConfirmDelete }) {
           </button>
         </div>
         <div className="title">
-          <h1>Are You Sure You Want to Continue?</h1>
+          <h3>Are You Sure You Want to Delete?</h3>
         </div>
-        <div className="body">
-          <p>The next page looks amazing. Hope you want to go there!</p>
-        </div>
+        
         <div className="footer">
           <button
             onClick={() => {
@@ -33,10 +30,9 @@ function Modal({ setOpenModal,setConfirmDelete }) {
               setOpenModal(false);
               setConfirmDelete(true)
               
-            }}>Continue</button>
+            }}>DELETE</button>
         </div>
       </div>
-    </div>
   );
 }
 export default Modal;

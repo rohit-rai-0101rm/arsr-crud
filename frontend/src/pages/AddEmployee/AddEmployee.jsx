@@ -30,6 +30,11 @@ const AddEmployee = ({history}) => {
     const onSubmit = (formData) => {
         console.log(formData);
         dispatch(createEmployee(formData));
+        alert.success("Product Created Successfully");
+        history.push("/employees");
+        window.location.reload()
+
+
 
 
        

@@ -37,7 +37,7 @@ const EmployeeDetails = ({ match }) => {
         <Loader />
       ) : (
         <Fragment>
-          <MetaData title={`${employee.name} -- ECOMMERCE`} />
+          <MetaData title={`${employee.name} -- EMPLOYEE`} />
           <div className="employeeDetails">
             <div>
               <EmployeeCard employee={employee} />
