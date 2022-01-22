@@ -5,7 +5,10 @@ import{
     CLEAR_ERRORS,
     EMPLOYEE_DETAILS_FAIL,
     EMPLOYEE_DETAILS_REQUEST,
-    EMPLOYEE_DETAILS_SUCCESS
+    EMPLOYEE_DETAILS_SUCCESS,
+    NEW_EMPLOYEE_REQUEST,
+    NEW_EMPLOYEE_SUCCESS,
+    NEW_EMPLOYEE_FAIL
 } from '../constants/employeeConstants'
 export const employeeReducer = (state = { employees: [] }, action) => {
     switch (action.type) {
@@ -57,6 +60,35 @@ export const employeeReducer = (state = { employees: [] }, action) => {
           error: action.payload,
         };
   
+      case CLEAR_ERRORS:
+        return {
+          ...state,
+          error: null,
+        };
+      default:
+        return state;
+    }
+  };
+  export const newEmployeeReducer = (state = { employee: {} }, action) => {
+    switch (action.type) {
+      case NEW_EMPLOYEE_REQUEST:
+        return {
+          ...state,
+          loading: true,
+        };
+      case NEW_EMPLOYEE_SUCCESS:
+        return {
+          loading: false,
+          success: action.payload.success,
+          product: action.payload.product,
+        };
+      case NEW_EMPLOYEE_FAIL:
+        return {
+          ...state,
+          loading: false,
+          error: action.payload,
+        };
+    
       case CLEAR_ERRORS:
         return {
           ...state,

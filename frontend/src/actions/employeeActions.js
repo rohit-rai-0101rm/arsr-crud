@@ -5,7 +5,10 @@ import{
     CLEAR_ERRORS,
     EMPLOYEE_DETAILS_REQUEST,
     EMPLOYEE_DETAILS_SUCCESS,
-    EMPLOYEE_DETAILS_FAIL
+    EMPLOYEE_DETAILS_FAIL,
+    NEW_EMPLOYEE_SUCCESS,
+    NEW_EMPLOYEE_FAIL,
+    NEW_EMPLOYEE_REQUEST
 } from '../constants/employeeConstants'
 import axios from 'axios'
 export const getEmployes =
@@ -51,4 +54,28 @@ export const getEmployes =
       });
     }
   };
+  export const createEmployee = (employeeData) => async (dispatch) => {
+    try {
+      dispatch({ type: NEW_EMPLOYEE_REQUEST });
   
+      const config = {
+        headers: { "Content-Type": "application/json" },
+      };
+  
+      const { data } = await axios.post(
+        `http://localhost:5000/api/v1/new`,
+        employeeData,
+        config
+      );
+  
+      dispatch({
+        type: NEW_EMPLOYEE_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: NEW_EMPLOYEE_FAIL,
+        payload: error.response.data.message,
+      });
+    }
+  };
