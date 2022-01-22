@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./EmployeeCard.css";
 import { Typography } from "@material-ui/core/";
 import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { useAlert } from "react-alert";
+import Modal from "../Modal/Modal";
 import moment from "moment";
-
+import { deleteEmployee } from "../../actions/employeeActions";
 const EmployeeCard = ({ employee }) => {
-  const viewEmployee = (id) => {
-    history.push("/employee/id");
-  };
+  const [modalOpen, setModalOpen] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState(false);
+
   const history = useHistory();
+
+  const alert = useAlert();
   const { _id, name, experience, role, createdAt } = employee;
+
+  const dispatch = useDispatch();
+  console.log(confirmDelete);
+
   return (
     <div className="employeeCard">
       <Typography variant="h4">{name}</Typography>
@@ -38,7 +47,26 @@ const EmployeeCard = ({ employee }) => {
           </button>
         </div>
         <div>
-          <button className="btn3">delete</button>
+          <button
+            onClick={() => {
+              setModalOpen(true);
+              if (confirmDelete) {
+                dispatch(deleteEmployee(_id));
+                alert.success("one employee deleted");
+                history.push("/employees");
+                window.location.reload();
+              }
+            }}
+            className="btn3"
+          >
+            delete
+          </button>
+          {modalOpen && (
+            <Modal
+              setOpenModal={setModalOpen}
+              setConfirmDelete={setConfirmDelete}
+            />
+          )}
         </div>
       </div>
     </div>

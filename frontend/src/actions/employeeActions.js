@@ -11,7 +11,10 @@ import{
     NEW_EMPLOYEE_REQUEST,
     UPDATE_EMPLOYEE_REQUEST,
     UPDATE_EMPLOYEE_SUCCESS,
-    UPDATE_EMPLOYEE_FAIL
+    UPDATE_EMPLOYEE_FAIL,
+    DELETE_EMPLOYEE_FAIL,
+    DELETE_EMPLOYEE_SUCCESS,
+    DELETE_EMPLOYEE_REQUEST
 } from '../constants/employeeConstants'
 import axios from 'axios'
 export const getEmployes =
@@ -103,6 +106,23 @@ export const getEmployes =
     } catch (error) {
       dispatch({
         type: UPDATE_EMPLOYEE_FAIL,
+        payload: error.response.data.message,
+      });
+    }
+  };
+  export const deleteEmployee = (id) => async (dispatch) => {
+    try {
+      dispatch({ type: DELETE_EMPLOYEE_REQUEST });
+  
+      const { data } = await axios.delete(`http://localhost:5000/api/v1/employee/${id}`);
+  
+      dispatch({
+        type: DELETE_EMPLOYEE_SUCCESS,
+        payload: data.success,
+      });
+    } catch (error) {
+      dispatch({
+        type: DELETE_EMPLOYEE_FAIL,
         payload: error.response.data.message,
       });
     }
