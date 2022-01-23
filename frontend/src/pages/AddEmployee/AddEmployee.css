@@ -1,4 +1,4 @@
-.addEmployee{
+.app{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,10 +11,9 @@
         display: flex;
         flex-direction: column;
         padding: 5px;
-        text-align: center;
     }
     .btn{
-        background-color: #4CAF50; 
+        background-color: #4CAF50; /* Green */
         border: none;
         color: white;
         padding: 15px 32px;
@@ -28,29 +27,4 @@
     }
     .invalid-feedback{
         color: red;
-    }
-    .form-control{
-        border: none;
-        border-radius: 5px;
-        height: 40px;
-        text-align: center;
-        width: 50vw;
-        font-size: 20px;
-        border: 1px solid whitesmoke;
-    }
-    .btn{
-text-align: center;
-        margin-top: 50px;
-        font-weight: bold;
-
-    }
-    .label{
-        font-size: 20px;
-        margin-bottom: 5px;
-    }
-    .invalid-feedback{
-        margin-top: 5px;
-
-        font-size: 20px;
-
     }
