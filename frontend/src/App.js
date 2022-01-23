@@ -18,8 +18,6 @@ function App() {
       <Route path="/employee/search/:keyword" component={AllEmployees} />
 
 
-      <Route exact path="/contact" component={Loader} />
-      <Route exact path="/contact" component={Loader} />
     </Router>
   );
 }

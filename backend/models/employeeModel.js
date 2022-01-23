@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const employeeSchema = mongoose.Schema({
   name: {
     type: String,
-    unique:true,
 
     required: [true, "Please Enter Your name"],
     maxLength: [30, "Name cannot exceed 30 characters"],
@@ -17,7 +16,6 @@ const employeeSchema = mongoose.Schema({
   },
   experience: {
     type: Number,
-    unique:true,
 
     required: [true, "Please Enter Your experience"],
     minLength: [1, "cannot be empty"],

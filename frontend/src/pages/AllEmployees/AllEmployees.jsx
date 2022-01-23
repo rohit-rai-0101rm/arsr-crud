@@ -48,7 +48,7 @@ console.log(match);
         <Loader />
       ) : (
         <Fragment>
-          <MetaData title="employees -- ECOMMERCE" />
+          <MetaData title="employees -- EMPLOYEE" />
 
           <div className="employees">
             {employees &&

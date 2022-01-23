@@ -22,7 +22,7 @@ const AddEmployee = ({history}) => {
         }
     
         if (success) {
-          alert.success("Product Created Successfully");
+          alert.success("employee Created Successfully");
           window.location.reload()
           history.push("/employees");
         }
@@ -30,7 +30,7 @@ const AddEmployee = ({history}) => {
     const onSubmit = (formData) => {
         console.log(formData);
         dispatch(createEmployee(formData));
-        alert.success("Product Created Successfully");
+        alert.success("employee Created Successfully");
         history.push("/employees");
         window.location.reload()
 
@@ -40,12 +40,12 @@ const AddEmployee = ({history}) => {
        
       };
       return (
-        <div className="App">
+        <div className="addEmployee">
       <div className="container py-2">
         <div className="card border-0 shadow w-75 p-3 mx-auto ">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-group">
-              <label htmlFor="name"> Name</label>
+              <label className="label" htmlFor="name"> Name</label>
               <input
                 type="text"
                 className={classNames("form-control", {
@@ -72,7 +72,7 @@ const AddEmployee = ({history}) => {
               )}
             </div>
             <div className="form-group">
-              <label htmlFor="role">what is your role</label>
+              <label className="label"  htmlFor="role">what is your role</label>
               <input
                 type="text"
                 className={classNames("form-control", {
@@ -94,7 +94,7 @@ const AddEmployee = ({history}) => {
               )}
             </div>
             <div className="form-group">
-              <label htmlFor="phone">Total experience in years</label>
+              <label className="label" htmlFor="phone">Total experience in years</label>
               <input
                 type="text"
                 className={classNames("form-control", {
@@ -118,10 +118,12 @@ const AddEmployee = ({history}) => {
                 <div className="invalid-feedback">{errors.experience.message}</div>
               )}
             </div>
-            
-            <button type="submit" className="btn btn-primary">
-              Create New Account
+            <div className="form-group">
+            <button type="submit" className="btn">
+              Add new Employee
             </button>
+            </div>
+           
           </form>
         </div>
       </div>

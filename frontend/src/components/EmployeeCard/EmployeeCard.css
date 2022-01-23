@@ -59,7 +59,9 @@
   height: 38px;
   width: 96px;
   border-radius: 10px;
-background-color: red;
+background-color:#f44336;
+font-weight: bold;
+border: none;
 color: white;
 cursor: pointer;
 
@@ -67,6 +69,8 @@ cursor: pointer;
 .btn2{
   height: 38px;
   width: 96px;
+  border: none;
+
   border-radius: 10px;
 background-color: blue;
 color: white;
@@ -74,6 +78,8 @@ cursor: pointer;
 }.btn1{
   height: 38px;
   width: 96px;
+  border: none;
+
   border-radius: 10px;
 background-color: green;
 cursor: pointer;
@@ -114,4 +120,7 @@ color: white;
 }
 .employeeCardContainer {
   padding-top: 5px;
+}
+.actionIcons{
+  margin: 3px;
 }

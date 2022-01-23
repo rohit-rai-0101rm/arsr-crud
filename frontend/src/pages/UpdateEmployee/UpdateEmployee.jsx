@@ -8,6 +8,7 @@ import {
   updateEmployee,
   getEmployeeDetails,
 } from "../../actions/employeeActions";
+import './UpdateEmployee.css'
 const UpdateEmployee = ({history,match}) => {
   const { register, handleSubmit,  errors,reset } = useForm();
 
@@ -29,9 +30,10 @@ const UpdateEmployee = ({history,match}) => {
   const{_id,name,role,experience}=employee
   console.log(_id,name,role,experience);
   const onSubmit = (employeeData,e) => {
+console.log(employeeData);
+dispatch(updateEmployee(_id,employeeData))
 
-    reset()
-    dispatch(updateEmployee(_id,employeeData))
+    reset(employeeData)
 alert.success("one item updated")
 history.push("/employees")
 window.location.reload()
@@ -43,9 +45,10 @@ window.location.reload()
     <div className="card border-0 shadow w-75 p-3 mx-auto ">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-group">
-          <label htmlFor="name"> Name</label>
+          <label className="label" htmlFor="name"> Name</label>
           <input
             type="text"
+            defaultValue={name}
             onChange={(e)=>e.target.value}
             className={classNames("form-control", {
               "is-invalid": errors.fullname,
@@ -71,9 +74,11 @@ window.location.reload()
           )}
         </div>
         <div className="form-group">
-          <label htmlFor="role">what is your role</label>
+          <label className="label" htmlFor="role">what is your role</label>
           <input
             type="text"
+            defaultValue={role}
+
             onChange={(e)=>e.target.value}
 
             className={classNames("form-control", {
@@ -95,9 +100,11 @@ window.location.reload()
           )}
         </div>
         <div className="form-group">
-          <label htmlFor="experience">Total experience in years</label>
+          <label className="label" htmlFor="experience">Total experience in years</label>
           <input
-            type="text"
+                      defaultValue={experience}
+
+            type="number"
             onChange={(e)=>e.target.value}
 
             className={classNames("form-control", {
@@ -112,6 +119,7 @@ window.location.reload()
                 message: "must be 1 year",
               },
               pattern: {
+                value: /^[0-9]+$/,
                 message: "please enter your experience in years",
               },
             })}
@@ -122,9 +130,11 @@ window.location.reload()
           )}
         </div>
         
-        <button type="submit" className="btn btn-primary">
-          Create New Account
-        </button>
+        <div className="form-group">
+            <button type="submit" className="btn">
+              Update Employee
+            </button>
+            </div>
       </form>
     </div>
   </div>

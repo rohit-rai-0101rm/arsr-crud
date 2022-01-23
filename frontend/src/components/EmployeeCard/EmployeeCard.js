@@ -9,19 +9,20 @@ import Modal from "../Modal/Modal";
 import moment from "moment";
 import { deleteEmployee } from "../../actions/employeeActions";
 const EmployeeCard = ({ employee }) => {
-  const showMsg=()=>{
-    alert.success("one item deleted")
-  }
-  const [modalOpen, setModalOpen] = useState(false);
-  const [confirmDelete, setConfirmDelete] = useState(false);
-
   const history = useHistory();
 
   const alert = useAlert();
   const { _id, name, experience, role, createdAt } = employee;
 
   const dispatch = useDispatch();
-  console.log(confirmDelete);
+  const handleDelete=(id)=>{
+    dispatch(deleteEmployee(id));
+    history.push("/employees");
+    alert.success("one employee deleted");
+
+    window.location.reload()
+
+  }
 
   return (
     <div className="employeeCard">
@@ -33,46 +34,32 @@ const EmployeeCard = ({ employee }) => {
       </Typography>
 
       <div className="actionIcons">
-        <div>
+        
           <button
             onClick={() => history.push(`/employee/${_id}`)}
             className="btn1"
           >
             view
           </button>
-        </div>
-        <div>
+        
+        
           <button
             onClick={() => history.push(`/update/${_id}`)}
             className="btn2"
           >
             edit
           </button>
-        </div>
-        <div>
+
+      
           <button
-            onClick={() => {
-             
-                dispatch(deleteEmployee(_id));
-showMsg()
-                history.push("/employees");
-                window.location.reload()
-                alert.success("one employee deleted");
-              }
-            }
+            onClick={handleDelete(_id) }
             className="btn3"
           >
             delete
           </button>
-          {modalOpen && (
-            <Modal
-              setOpenModal={setModalOpen}
-              setConfirmDelete={setConfirmDelete}
-            />
-          )}
+         
         </div>
       </div>
-    </div>
   );
 };
 

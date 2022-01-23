@@ -16,7 +16,7 @@ exports.getAllEmployees = catchAsyncErrors(async (req, res, next) => {
   const resultPerPage = 5;
   const employeeCount = await Employee.countDocuments();
 
-  const apiFeature = new ApiFeatures(Employee.find(), req.query)
+  const apiFeature = new ApiFeatures(Employee.find().sort({"createdAt": -1}), req.query)
     .search()
     .filter();
 
