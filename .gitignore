@@ -9,6 +9,8 @@
 
 # production
 /frontend/build
+/backend/config/config.env
+
 
 # misc
 /frontend/.DS_Store
